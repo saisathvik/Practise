@@ -7,26 +7,27 @@ class Solution:
         :rtype: int
         """
         quan = 1000000007
+        if A > B :
+            A , B = B, A
         lcm = A*B/self.gcd(A,B)
         per_block = lcm/A + lcm/B - 1
         
+        #N is offset to include lcm's multiples, which are excluded in the begining
         M = int( N + int (N // per_block) ) 
         
-        lhs = int (( M/( (B/A)+1) ) - 1)
-        rhs = int ((M+1)/( (B/A)+1 ))
+        # x is number of multiples of B before N 
+        x = int ((M+1)/( (B/A)+1 ))
         
-        for x in range(lhs,rhs+1):
-            if M == self.func(x,A,B):
-                return (x*B)%quan
-            elif M < self.func(x+1,A,B):
-                return ((M-x)*A)%quan
+        if M == self.func(x,A,B):
+            return (x*B)%quan
+        else:
+            return ((M-x)*A)%quan
+
         
     def  func(self,i,a,b):
         return int ( (i*b/a) + i)
         
     def gcd(self,a,b):
-        if a > b:
-            a , b = b , a
         if b % a == 0:
             return a
         else:
