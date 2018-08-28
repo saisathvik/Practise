@@ -32,6 +32,6 @@ class Solution:
        
        
 if __name__ == "__main__":
-#    print(Solution().isScramble("great", "rgeat"))
-#    print(Solution().isScramble("abcde","caebd"))
+    print(Solution().isScramble("great", "rgeat"))
+    print(Solution().isScramble("abcde","caebd"))
     print(Solution().isScramble("abcdefghijklmn", "efghijklmncadb"))
